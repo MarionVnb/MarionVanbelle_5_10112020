@@ -1,20 +1,19 @@
 {
-  "name": "orinoco-backend",
+  "name": "projet5",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarionVnb/MarionVanbelle_5_10112020.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.3.8",
-    "mongoose-unique-validator": "^2.0.2",
-    "uuid": "^3.3.2"
-  }
+  "bugs": {
+    "url": "https://github.com/MarionVnb/MarionVanbelle_5_10112020/issues"
+  },
+  "homepage": "https://github.com/MarionVnb/MarionVanbelle_5_10112020#readme"
 }
