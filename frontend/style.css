@@ -1,0 +1,38 @@
+.bg-orinoco {
+    background-color: #f3e9f1; 
+}
+
+.btn {
+    background-color : #710AE7; 
+    border: 0; 
+    margin-top:10px; 
+}
+
+#message-panier {
+    display:none; 
+}
+
+a {
+    color: rgb(0, 0, 0); 
+}
+
+
+
+
+/* Voici la mise en forme pour les erreurs 
+.error {
+    width  : 100%;
+    padding: 0;
+   
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+   
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .error.active {
+    padding: 0.3em;
+  } */

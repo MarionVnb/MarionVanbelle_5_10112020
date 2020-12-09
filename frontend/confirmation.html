@@ -27,8 +27,8 @@
                       <li class="nav-item">
                         <a class="nav-link" href="index.html"></a>
                       </li>
-                      <li class="nav-item active">
-                        <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i> | Mon panier</a>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i> | Mon panier</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href=""><i class="fas fa-user"></i> | Mon compte</a>
@@ -44,73 +44,16 @@
 
 <!-- contenu principal -->
     <main class="container">
-      <div class="row mt-4">
+      <div class="row">
         <div class="col">
-      <h2 class="my-4">Votre panier</h2>
-      <div class="table-responsive">
-        <table class="table" id="table">
-          <thead class="thead-light">
-            <tr>
-              <th>Produit</th>
-              <th>Lentille</th>
-              <th >Prix unitaire</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="eltForm">
-            <tr id="msg-panier-vide">
-              <td id="title"></td>
-              <td id="lentille"></td>
-              <td id="price"></td>
-              <td id="total"></td>
-            </tr>
-            <tr id="totalPrice"></tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
-      </div>
-      <hr>
-      <div class="row mt-4">
-        <div class="col">
-      <h2 class="my-4">Pour finaliser votre commande, merci de renseigner le formulaire ci-dessous </h2>
-        <form id="form" method="post" action="">
-          <div class=”form-group”>
-            <label for="nom">Votre nom*</label>
-            <input type="text" name="nom" id="nom" class="form-control" required>
-            <span id="missNom"></span>
-            <span class="error"></span>
-          </div>
-          <div class=”form-group”>
-            <label for="prenom">Votre prénom*</label>
-            <input type="text" name="prenom" id="prenom" class="form-control" required>
-            <span id="missPrenom"></span>
-            <span class="error"></span>
-          </div>
-          <div class="form-group">
-            <label for="email">Votre mail*</label>
-            <input type="email" name="email" id="email" class="form-control" required> 
-            <span id="missEmail"></span>
-            <span class="error"></span>
-          </div>
-          <div class=”form-group”>
-            <label for="adresse">Votre adresse*</label>
-            <input type="text" name="adresse" id="adresse" class="form-control" required>
-            <span id="missAdresse"></span>
-            <span class="error"></span>
-          </div>
-          <div class=”form-group”>
-            <label for="ville">Ville*</label>
-            <input type="text" name="ville" id="ville" class="form-control" required>
-            <span id="missVille"></span>
-            <span class="error"></span>
-          </div>
-          <button type="submit" class="btn btn-dark m-4" id="bouton_envoi">Envoyer</button>
-        </form>
-        <p>Les champs indiqués par une * sont obligatoires</p>
+          <h5>Confirmation de commande</h5>
+          <p>Merci pour votre commande n°????? </p>
+          <p>Rappel : montant total de votre commande : ?????</p>
         </div>
-        </div>
+      </div>
     </main>
+
+              
 <!-- fin du contenu principal-->
 
 <!-- footer-->
@@ -136,7 +79,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="panier.js"></script>
+<script src="confirmation.js"></script>
 </body>
 
 </html>
