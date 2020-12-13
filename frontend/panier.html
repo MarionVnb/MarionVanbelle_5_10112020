@@ -28,7 +28,7 @@
                         <a class="nav-link" href="index.html"></a>
                       </li>
                       <li class="nav-item active">
-                        <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i> | Mon panier</a>
+                        <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i><span id="viewQuantite"></span>  | Mon panier</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href=""><i class="fas fa-user"></i> | Mon compte</a>
@@ -64,10 +64,12 @@
               <td id="price"></td>
               <td id="total"></td>
             </tr>
-            <tr id="totalPrice"></tr>
           </tbody>
         </table>
+        <div id="totalPrice" class=" font-weight-bold bg-dark text-white text-center"></div>
+        <button type="" class="btn btn-dark m-4" id="btnClear"><i class="fas fa-trash"></i> Vider le panier</button>
       </div>
+      
       </div>
       </div>
       <hr>
@@ -97,6 +99,12 @@
             <label for="adresse">Votre adresse*</label>
             <input type="text" name="adresse" id="adresse" class="form-control" required>
             <span id="missAdresse"></span>
+            <span class="error"></span>
+          </div>
+          <div class=”form-group”>
+            <label for="codePostal">Code Postal*</label>
+            <input type="text" name="codePostal" id="codePostal" class="form-control" required>
+            <span id="missCodePostal"></span>
             <span class="error"></span>
           </div>
           <div class=”form-group”>

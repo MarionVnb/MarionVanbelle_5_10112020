@@ -13,13 +13,8 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="alert alert-success alert-dismissible fade show" role="alert" id="message-panier">
-      <p class="alert-heading" >L'article a été ajouté à votre panier</p>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
+    <div id="message-panier">
     </div>
-
     <div class="bg-orinoco">
       <div class="container">
         <div class="row">
@@ -36,7 +31,7 @@
                   <a class="nav-link" href="index.html"></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i> | Mon panier</a>
+                  <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i><span id="viewQuantite"></span> | Mon panier</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href=""><i class="fas fa-user"></i> | Mon compte</a>

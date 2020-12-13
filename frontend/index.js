@@ -36,6 +36,12 @@ fetch ("http://localhost:3000/api/cameras", {method:"GET"})
             console.log('For : ' + Products[$i].name)
         }
     })
+    //AFFICHAGE QUANTITÉ PRODUIT DANS LE HEADER / PANIER 
+    let contenuPanier = JSON.parse(localStorage.getItem("contenuPanier")); 
+    let viewQuantite = document.getElementById("viewQuantite"); 
+        if (contenuPanier.length === null){
+            viewQuantite.innerHTML = '0'; 
+        } else {viewQuantite.innerHTML = '-' + contenuPanier.length + ' articles';}
 
 window.onload = function(){
 }

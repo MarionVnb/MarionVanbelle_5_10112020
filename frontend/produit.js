@@ -51,24 +51,32 @@ fetch ("http://localhost:3000/api/cameras/"+id, {method:"GET"})
                 quantity:1, 
                 price: product.price / 100, 
                 total: product.price / 100, 
-                }
-                ; //est ce que ca doit être inclu dans un tableau ou pas ? 
+                }; 
 
             let contenuPanier = JSON.parse(localStorage.getItem("contenuPanier")); 
             if (contenuPanier === null) {
                contenuPanier = [];
-            } else {
-                let produitDejaDansPanier = contenuPanier.find(product => product.name === dataProduct.name);
-                produitDejaDansPanier.quantity ++; 
-                dataProduct.total = produitDejaDansPanier.price * produitDejaDansPanier.quantity;
-            }
-                     contenuPanier.push(dataProduct); 
-                    localStorage.setItem ("contenuPanier", JSON.stringify(contenuPanier));  
-                    document.getElementById("message-panier").style.display = "block"; 
-                    //alert ('Le produit a été ajouté au panier') 
-                    
-                
+            } 
+            contenuPanier.push(dataProduct); 
+            localStorage.setItem ("contenuPanier", JSON.stringify(contenuPanier)); 
+            //affichage de l'alerte "produit ajouté au panier"
+            let alerteMessage= document.getElementById("message-panier")
+            let alerte = ''
+            alerte += 
+                `<div class="alert alert-success alert-dismissible fade show" role="alert" id="message-panier">
+                <p class="alert-heading" >L'article a été ajouté à votre panier</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>`
+            alerteMessage.innerHTML = alerte; 
+            
+            // affichage du nombre d'articles dans le panier
+            let viewQuantite = document.getElementById("viewQuantite"); 
+            if (contenuPanier.length===null){
+                viewQuantite.innerHTML = '0'; 
+            } else {viewQuantite.innerHTML = '-' + contenuPanier.length + ' articles';}  
             }
     }); 
+   
 
 window.onload = function(){}

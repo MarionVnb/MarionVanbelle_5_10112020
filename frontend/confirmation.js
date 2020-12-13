@@ -1,46 +1,27 @@
-function getId() {
-    const param = window.location.search; 
-    console.log(window.location.search)
-    const id = param.replace("?id=", "");
-    return id; 
-}
+//récupérer les infos contenues dans le localStorage + les afficher en JavaScript: 
+var contenuCommande = localStorage.getItem('contenuCommande');
+contenuCommande = JSON.parse(contenuCommande);
+console.log(contenuCommande)
+console.log(contenuCommande[0].contact.firstName)
+console.log(contenuCommande[0].orderId)
+console.log(contenuCommande[0].products[0].price)
 
+let prenom = document.getElementById("prenom");
+prenom.innerHTML = (contenuCommande[0].contact.firstName)
 
-fetch ("http://localhost:3000/api/cameras/"+id, {method:"GET"})
-    .then ((data) =>{
-        return data.json()
-    }).then ((product) => {
-        let eltCards = document.getElementById("box-card")
-        console.log(product)
-        
-        let allProducts = ''
-     
+let numeroCommande = document.getElementById("numeroCommande");
+numeroCommande.innerHTML = (contenuCommande[0].orderId)
 
-            allProducts += 
-            `<div class="col">
-                <div class="card border-light shadow">
-                    <img class="card-img-top" src=${product.imageUrl} alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name} <i class="far fa-heart"></i></h5>
-                        <p class="card-text">${product.description}</p>
-                        <p class="card-price">${product.price + "€"}</p>
-                    </div>
-                </div>
-            </div>`
-            
-        console.log(allProducts)
-        eltCards.innerHTML = allProducts
-        // afficher les différentes lentilles dans un menu déroulant : 
-        let eltLense = document.getElementById("select")
-        let allLenses= "";
-        product.lenses.forEach((lense)=> {
-        allLenses+='<option>'+lense +'</option>'
-        })
-        
-        console.log(allLenses)
+let montant = document.getElementById("montant");
+montant.innerHTML = (contenuCommande[0].products[0].price/100+"€")
 
-         eltLense.innerHTML = allLenses
-    })
+let nombreArticle = document.getElementById("nombreArticle");
+nombreArticle.innerHTML = (contenuCommande[0].products.length)
 
-window.onload = function(){
-}
+//VIDER LE PANIER / CLEAR LE LOCAL STORAGE
+let btnClear = document.getElementById("btnClear");
+btnClear.addEventListener ('click', (event) => {
+    window.close();
+    localStorage.clear(); 
+    document.location.reload();
+   }); 
