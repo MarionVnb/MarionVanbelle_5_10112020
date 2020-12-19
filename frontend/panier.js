@@ -1,25 +1,24 @@
-//récupérer les infos contenues dans le localStorage + l'afficher en JavaScript: 
+//Récupérer les infos contenues dans le localStorage & les afficher en JavaScript: 
 var contenuPanier = localStorage.getItem('contenuPanier');
 contenuPanier = JSON.parse(contenuPanier);
 
 
 //s'il n'y a aucune info de stocker, afficher "votre panier est vide": 
-    if (contenuPanier===null){
-        const emptybag = document.getElementById ('msg-panier-vide'); 
-        emptybag.innerHTML = 'Votre panier est vide'; 
-            
-    }else { //Si le panier n'est pas vide, afficher les infos produit:   
-        let eltForm = document.getElementById("eltForm")
-        let allProducts = "";
-        let totalPrice = 0;
-        contenuPanier.forEach(product => {
-            console.log(product.name)
-            console.log(product.lense)
-            console.log(product.price)
-            console.log(product.id)
-            totalPrice += product.price;
+if (contenuPanier===null){
+    const emptybag = document.getElementById ('msg-panier-vide'); 
+    emptybag.innerHTML = 'Votre panier est vide'; 
+}else { //Si le panier n'est pas vide, afficher les infos produit:   
+    let eltForm = document.getElementById("eltForm");
+    let allProducts = "";
+    let totalPrice = 0;
+    contenuPanier.forEach(product => {
+        console.log(product.name)
+        console.log(product.lense)
+        console.log(product.price)
+        console.log(product.id)
+        totalPrice += product.price;
 
-            allProducts += 
+        allProducts += 
             `<tbody id="eltForm">
                 <tr id="msg-panier-vide">
                     <td id="title">${product.name}</td>
@@ -28,26 +27,28 @@ contenuPanier = JSON.parse(contenuPanier);
                     <td id="total">${product.price+"€"}</td>
                 </tr>
              </tbody>`  
-        });
+    });
 
-        eltForm.innerHTML = allProducts; 
+    eltForm.innerHTML = allProducts; 
 
-//AFFICHER LE MONTANT TOTAL 
-let totalAffiche = document.getElementById("totalPrice");
-totalAffiche.innerHTML = 'TOTAL: ' + totalPrice + '€';
+    //AFFICHER LE MONTANT TOTAL 
+    let totalAffiche = document.getElementById("totalPrice");
+    totalAffiche.innerHTML = 'TOTAL: ' + totalPrice + '€';
 
-// AFFICHER LA QUANTITÉ DES PRODUITS DU PANIER DANS LE HEADER
-let viewQuantite = document.getElementById("viewQuantite"); 
+    // AFFICHER LA QUANTITÉ DES PRODUITS DU PANIER DANS LE HEADER
+    let viewQuantite = document.getElementById("viewQuantite"); 
     if (contenuPanier.length===null){
-         viewQuantite.innerHTML = '0'; 
-    } else {viewQuantite.innerHTML = '-' + contenuPanier.length + ' articles';}
+        viewQuantite.innerHTML = '0'; 
+    } else {viewQuantite.innerHTML = '-' + contenuPanier.length + ' articles';
     }
+}
+
 //VIDER LE PANIER / CLEAR LE LOCAL STORAGE
 let btnClear = document.getElementById("btnClear");
 btnClear.addEventListener ('click', (event) => {
     localStorage.clear(); 
     document.location.reload();
-   }); 
+}); 
 
 ////////////////////////////////VÉRIFICATION DES DONNÉES DU FORMULAIRE////////////////////////////////
 
@@ -129,7 +130,7 @@ function validationEmail(input , spanMessage){
 //4-vérification de l'adresse
 let adresse = document.getElementById("adresse");
 let missAdresse = document.getElementById("missAdresse");
-  
+        
 function validationAdresse(input , spanMessage){
     let adresseValid = /^[0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50}$/;
     //Si le champ est vide
@@ -153,7 +154,7 @@ function validationAdresse(input , spanMessage){
 //5-vérification du code postal
 let codePostal = document.getElementById("codePostal");
 let missCodePostal = document.getElementById("missCodePostal");
-  
+        
 function validationCodePostal(input , spanMessage){
     let codePostalValid = /^[0-9]{5,5}$/;
     //Si le champ est vide
@@ -197,6 +198,8 @@ function validationVille(input , spanMessage){
         return true;
     }
 }
+ 
+////////////////////////////////ENVOI DU FORMULAIRE ET DU CONTENU PANIER À L'API////////////////////////////////
 formValid.addEventListener('click', (event) => {
     event.preventDefault();
   
@@ -222,27 +225,25 @@ formValid.addEventListener('click', (event) => {
                 city: ville.value,
                 email: email.value
             },
-            products: [product_ids]
+            products: product_ids
         }
+
         let dataForBack = JSON.stringify(order);
         // APPEL L'API AVEC MÉTHODE POST 
         fetch ("http://localhost:3000/api/cameras/order", 
-        {
-            method:"POST",
-            headers: { "Content-Type" : "application/json" },
-            body : dataForBack,
-        })
-        .then ((data) =>{
-            return data.json()
-        }).then ((dataCommande) => {
-            let contenuCommande = JSON.parse(localStorage.getItem("contenuCommande")); 
-               contenuCommande= [];
-            contenuCommande.push(dataCommande); 
-            localStorage.setItem ("contenuCommande", JSON.stringify(contenuCommande)); 
-            window.open("confirmation.html","newFenetre","width=600,height=500");
-            document.location.reload();
-           
-        })
+            {
+                method:"POST",
+                headers: { "Content-Type" : "application/json" },
+                body : dataForBack,
+            })
+            .then ((data) => {
+                return data.json()
+            }).then ((dataCommande) => {
+                let contenuCommande = JSON.parse(localStorage.getItem("contenuCommande")); 
+                contenuCommande= [];
+                contenuCommande.push(dataCommande); 
+                localStorage.setItem ("contenuCommande", JSON.stringify(contenuCommande)); 
+                window.location.replace("confirmation.html");
+            })
     }
-});
-window.onload = function(){}
+}); 
